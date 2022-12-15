@@ -4,26 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Market</title>
+    <title >Your Market</title>
+    <script src="https://kit.fontawesome.com/b65380c159.js" crossorigin="anonymous"></script>
     <style>
         nav {
             display: flex;
+            width: 100%;
             justify-content: space-around;
+            height: 75px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: #E0E0E0;
         }
-        nav input {
+        #logo {
+            margin-left: 50px;
+        }
+        #logo > img {
+            width: 32%;
+        }
+        #search > input {
+            height: 25px;
+        }
+        #search > button {
+            height: 30px;
+            width: 40px;
+        }
+        #basket {
+            
+        }
+        #basket1 {
+            height: 25px;
+            text-align: right;
+        }
+        #basket1 > p {
+            margin-top: 0px;
+        }
+        #basket2 {
+            display: flex;
+            
+        }
+        #basket2 > div {
+            
+            text-align: right;
+        }
+        #basket2 > div:nth-child(2) {
+            width: 50px;
+        }
+        nav img {
+            width: 20%;
+        }
+        #search {
+            width: 100%;
             height: 30px;
             width: 100%;
         }
-        nav img {
-            width: 30%;
+        #search > input {
+            width: 80%;
         }
-        #bag {
-            font-size: 20px;
-            background-color: rgb(248, 224, 191);
+        #btn {
+            text-align: right;
+            margin-top: -48px;
+        }
+        #btn > a > button {
+            background-color: #84C225;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
         }
         #banner {
             width: 100%;
-            margin-top: 50px;
+            margin-top: 75px;
         }
         #banner2 {
             width: 90%;
@@ -173,31 +226,24 @@
         <div id="logo">
             <img src="\pics\YourMarket.png" alt="">
         </div>
-        <input id="searchbar" type="text" placeholder="Search for Products...">
+        <div id="search">
+            <input type="text" placeholder="Search for Products...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
         <div id="basket">
-            <div>
-                <p>Login / Signup</p>
+            <div id="basket1">
+                <a href="login.html" target="_blank"><p>Login/Sign Up</p></a>
             </div>
-            <div>
-                <p>My Basket</p>
+            <div id="basket2">
+                <div>
+                    <img style="width: 10%;" src="\pics\cart.jpg" alt="">
+                </div>
+                <div>
+                    <a href=""><span id="cart">0</span><span> items</span></a>
+                </div>
             </div>
         </div>
     </nav>
-    <!-- <div id="navbar">
-        <div>
-            <img style="width: 20%;" src="\pics\YourMarket.png" alt="">
-        </div>
-        <div>
-            <input type="text" placeholder="Search for Products...">
-            <button>Search</button>
-        </div>
-        <div id="cart">
-            <img style="width: 10%; height: 50px;" src="\pics\cart.jpg" alt="">
-            <div>
-                <h1 style="display: block; height: 50px;">0 Items</h1>
-            </div>
-        </div>
-    </div> -->
     <div id="banner">
         <img src="https://www.bigbasket.com/media/uploads/banner_images/YXHP144_hp_fom_m_bbpl-staples_460_121222_Bangalore.jpg" alt="">
     </div>
@@ -217,8 +263,11 @@
         <img class="hover" src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/79e284b5-4eb8-4e08-b32f-de87a6dcb369/51aad6de-a6a3-4c76-a073-eeb0915e8f14/t1_hp_aff_m_dbs_360_101222.jpg" alt="">
     </div>
     <h2>Best Sellers</h2>
+    <div id="btn">
+        <a href="showmore.html"><button>Show More</button></a>
+    </div>
     <div id="bestsellers">
-
+        <!-- Append Items here -->
     </div>
     <h2>Top Offers</h2>
     <div id="topoffers">
