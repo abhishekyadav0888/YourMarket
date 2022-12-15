@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Your Market</title>
+    <script src="https://kit.fontawesome.com/b65380c159.js" crossorigin="anonymous"></script>
+    <style>
+        nav {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            height: 75px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: #E0E0E0;
+        }
+        #logo {
+            margin-left: 50px;
+        }
+        #logo > img {
+            width: 32%;
+        }
+        #search > input {
+            height: 25px;
+        }
+        #search > button {
+            height: 30px;
+            width: 40px;
+        }
+        #basket {
+            
+        }
+        #basket1 {
+            height: 25px;
+            text-align: right;
+        }
+        #basket1 > p {
+            margin-top: 0px;
+        }
+        #basket2 {
+            display: flex;
+            
+        }
+        #basket2 > div {
+            
+            text-align: right;
+        }
+        #basket2 > div:nth-child(2) {
+            width: 50px;
+        }
+        nav img {
+            width: 20%;
+        }
+        #search {
+            width: 100%;
+            height: 30px;
+            width: 100%;
+        }
+        #search > input {
+            width: 80%;
+        }
+        #about {
+            margin: auto;
+            border: 1px solid grey;
+            padding: 10px;
+            margin-top: 30px;
+        }
+        #green {
+            color: #81C784;
+            font-weight: bold;
+        }
+        .black {
+            color: black;
+            font-size: 30px;
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+        .left {
+            text-align: left;
+            color: grey;
+        }
+        img {
+            width: 100%;
+        }
+        div {
+            width: 90%;
+            margin: auto;
+        }
+        div > img {
+            border: 0.25px solid #E0E0E0;
+        }
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            color: rgb(68, 68, 68);
+        }
+        #below2 {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            margin: auto;
+        }
+        td {
+            text-align: left;
+        }
+        td > img {
+            width: 5%;
+        }
+        .tdgreen {
+            color: #81C784;
+            width: 20%;
+        }
+        #container {
+            width: 100%;
+            display: flex;
+        }
+        #container1 {
+            width: 10%;
+            margin-top: 80px;
+            position: fixed;
+            top: 0;
+            margin-left: 40px;
+            margin-right: 50px;
+        }
+        #container2 {
+            width: 75%;
+            justify-content: right;
+            margin-top: 80px;
+            margin-right: 25px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+        #container2 > div {
+            height: 440px;
+            padding-top: 0px;
+            padding-bottom: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+        #container2 > div:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        #container2 > div > img {
+            width: 100%;
+            border: none;
+        }
+        #disc {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            margin-top: 2px;
+            line-height: 22px;
+            font-size: 10px;
+            text-align: right;
+            color: #d67d73;
+            font-weight: bolder;
+        }
+        #comp {
+            color: #999999;
+            font-size: 11px;
+            padding: 0px 0px;
+            margin: 5px 0px 0px 0px;
+        }
+        #nam {
+            color: #333333;
+            font-size: 13px;
+            padding: 0px 0px;
+            margin: 5px 0px 0px 0px;
+        }
+        #rat {
+            background-color: #f4f3f2;
+            padding: 15px 8px 15px 10px;
+            margin-top: 10px;
+        }
+        #pri {
+            color: #6E6E71;
+            font-size: 10px;
+        }
+        #pri1 {
+            color: #6E6E71;
+            font-size: 10px;
+        }
+        #pri2 {
+            color: #231F20;
+            font-size: 14px;
+        }
+        #del {
+            color: #333333;
+            font-size: 10px;
+            padding: 0px 0px;
+            margin: 5px 0px 10px 0px;
+        }
+        #add {
+            background-color: #fde37b;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 15px;
+            font-size: 13px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <img src="\pics\YourMarket.png" alt="">
+        </div>
+        <div id="search">
+            <input type="text" placeholder="Search for Products...">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="basket">
+            <div id="basket1">
+                <a href="login.html" target="_blank"><p>Login/Sign Up</p></a>
+            </div>
+            <div id="basket2">
+                <div>
+                    <img style="width: 10%;" src="\pics\cart.jpg" alt="">
+                </div>
+                <div>
+                    <a href=""><span id="cart">0</span><span> items</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="container">
+        <div id="container1">
+            <h4>Sort by Price-</h4>
+            <ul>Low to High</ul>
+            <ul>High to Low</ul>
+            <h4>Sort by Discount-</h4>
+            <ul>Low to High</ul>
+            <ul>High to Low</ul>
+            <h4>Manufactured by-</h4>
+            <ul>Fresho</ul>
+            <ul>BORGES</ul>
+            <ul>BB Royal</ul>
+            <ul>BB Popular</ul>
+            <ul>BB Home</ul>
+            <ul>Colgate</ul>
+            <ul>Vaseline</ul>
+            <ul></ul>
+        </div>
+        <div id="container2">
+
+        </div>
+        <!-- Append here -->
+    </div>
+    <div id="below2">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="tdgreen">POPULAR CATEGORIES:</td>
+                    <td>Sunflower Oils, Wheat Atta, Ghee, Milk, Health Drinks, Flakes, Organic F&V, Namkeen, Eggs, Floor Cleaners, Other Juices, Leafy Vegetables, Frozen Veg Food, Diapers & Wipes.</td>
+                </tr>
+                <tr>
+                    <td class="tdgreen">POPULAR BRANDS:</td>
+                    <td>Amul, Nescafe, MTR, RED BULL, elite cake, Pediasure, Yummiez, Yera, Yakult, Britannia, Wow Momo, Fortune, Haldirams, Ferrero, Lays, Patanjali, McCain, kwality walls, Cadbury Dairy Milk, Pedigree.</td>
+                </tr>
+                <tr>
+                    <td class="tdgreen">CITIES WE SERVE:</td>
+                    <td>Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Nashik Business, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, Krishna District, Bhubaneshwar-Cuttack, Guwahati, Renigunta, Hubli, Davanagere, Trichy, Amravati, Raipur, Rajkot, Gwalior, Bareilly, Allahabad, Hyderabad Rural, Bangalore Rural, Chennai Rural, Vizag Rural, Lucknow Rural, Noida Rural, Ahmedabad Rural, Bhopal Rural, Bhubaneswar Rural, Coimbatore Rural, Chandigarh Rural, Gurugram Rural, Guwahati Rural, Indore Rural, Kochi Rural, Kolkata Rural, Mumbai Rural, Mysore Rural, Nagpur Rural, Patna Rural, Pune Rural, Surat Rural, Vadodara Rural, Jaipur Rural, Ranchi, Nashik, Agra, Kozhikode.</td>
+                </tr>
+                <tr>
+                    <td class="tdgreen">PAYMENT OPTIONS:</td>
+                    <td>
+                        <img src="https://cdn.shopify.com/s/files/1/0353/8056/0012/files/payment_cod.svg?v=1663912907" alt="">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Visa-europe-logo.gif" alt="">
+                        <img src="https://img.etimg.com/thumb/msid-92061657,width-300,imgsize-10384,,resizemode-4,quality-100/axis-bank-and-indian-oil-launch-co-branded-rupay-contactless-credit-card.jpg" alt="">
+                        <img src="https://i0.wp.com/www.mobileworldlive.com/wp-content/uploads/2013/06/300px-MasterCard_Logo.png?w=300&ssl=1" alt="">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    let container2 = document.getElementById("container2");
+
+    let data = [
+{
+    "id" : 1,
+    "discount" : 25,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000150_19-fresho-onion.jpg",
+    "company" : "Fresho",
+    "name" : "Onion (Loose)",
+    "price1" : 190.88,
+    "price2" : 143,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 2,
+    "discount" : 41,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40208261_1-borges-extra-virgin-olive-oil.jpg",
+    "company" : "BORGES",
+    "name" : "Extra Virgin Olive Oil",
+    "price1" : 6000,
+    "price2" : 3540,
+    "delivery" : "Today 7:00PM-10:00PM"
+},
+{
+    "id" : 3,
+    "discount" : 26,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40186855_6-colgate-strong-teeth-anticavity-toothpaste-with-amino-shakti-formula-provides-fresher-breath.jpg",
+    "company" : "Colgate",
+    "name" : "Strong Teeth : India's No.1 Toothpaste | Anticavity Toothpaste With Amino Shakti Formula - 500g, 2x200g + 100g.",
+    "price1" : 266,
+    "price2" : 196,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 4,
+    "discount" : 27,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/20005940_11-bb-royal-sona-masoori-rice-raw-rice-super-premium-12-months-old.jpg",
+    "company" : "BB Royal",
+    "name" : "Sona Masoori Raw Rice/Akki - Super Premium, 12 + Months Old",
+    "price1" : 1875,
+    "price2" : 1375,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 5,
+    "discount" : 30,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40204988_1-the-laughing-cow-cheese-slices.jpg",
+    "company" : "The Laughing Cow",
+    "name" : "Cheese Slices",
+    "price1" : 435,
+    "price2" : 304.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 6,
+    "discount" : 34,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40089741_2-fresho-beans-haricot.jpg",
+    "company" : "Fresho",
+    "name" : "Beans - Haricot (Loose)",
+    "price1" : 61.84,
+    "price2" : 41,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 7,
+    "discount" : 24,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/1203441_1-fresho-onion-1-kg-new-potato-1-kg-tomato-hybrid-1-kg.jpg",
+    "company" : "Fresho",
+    "name" : "Onion 1 kg + New Potato 1 kg + Tomato - Hybrid 1 kg",
+    "price1" : 129.63,
+    "price2" : 98.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 8,
+    "discount" : 36,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40030808_10-bb-royal-cuminjeera-whole.jpg",
+    "company" : "BB Royal",
+    "name" : "Cumin/Jeera/Jeerige - Whole",
+    "price1" : 600,
+    "price2" : 385,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 9,
+    "discount" : 31,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000074_19-fresho-cauliflower.jpg",
+    "company" : "Fresho",
+    "name" : "Cauliflower",
+    "price1" : 21.05,
+    "price2" : 14.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 10,
+    "discount" : 47,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/303219_9-borges-durum-wheat-pasta-penne-rigate.jpg",
+    "company" : "BORGES",
+    "name" : "Durum Wheat Pasta - Penne Rigate",
+    "price1" : 299,
+    "price2" : 158.47,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 11,
+    "discount" : 26,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40178129_10-pampers-diaper-pants-large.jpg",
+    "company" : "Pampers",
+    "name" : "All-Round Protection Diaper Pants - L, 9-14 kg, Anti-Rash, Ultra Absorb",
+    "price1" : 3149,
+    "price2" : 2341.50,
+    "delivery" : "Today 7:00PM-10:00PM"
+},
+{
+    "id" : 12,
+    "discount" : 37,
+    "img" : "https://www.bigbasket.com/media/uploads/bpi/bangalore/mm/40118800_1-vaseline-intensive-care-deep-moisture-body-lotion-dry-skin-with-pure-oat-extract-long-lasting-moisturization.jpg",
+    "company" : "Vaseline",
+    "name" : "Intensive Care Deep Moisture Body Lotion - Dry Skin, With Pure Oat Extract, Long Lasting Moisturization",
+    "price1" : 375,
+    "price2" : 236.25,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 13,
+    "discount" : 54,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000103_16-fresho-cucumber.jpg",
+    "company" : "Fresho",
+    "name" : "Cucumber (Loose)",
+    "price1" : 35.86,
+    "price2" : 16.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 14,
+    "discount" : 46,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000098_9-fresho-coriander-leaves.jpg",
+    "company" : "Fresho",
+    "name" : "Coriander Leaves",
+    "price1" : 37.99,
+    "price2" : 20.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 15,
+    "discount" : 26,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000266_28-fresho-orange-nagpur-regular.jpg",
+    "company" : "Fresho",
+    "name" : "Orange - Nagpur, Regular (Loose)",
+    "price1" : 94.08,
+    "price2" : 70,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 16,
+    "discount" : 41,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000273_16-fresho-mushrooms-button.jpg",
+    "company" : "Fresho",
+    "name" : "Mushrooms - Button",
+    "price1" : 78.29,
+    "price2" : 46,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 17,
+    "discount" : 31,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000908_15-fresho-chicken-curry-cut-without-skin-antibiotic-residue-free-13-15-pcs.jpg",
+    "company" : "Fresho",
+    "name" : "Chicken - Curry Cut Without Skin, Antibiotic Residue Free, 12-16 Pcs",
+    "price1" : 207,
+    "price2" : 143,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 18,
+    "discount" : 24,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/1200045_1-fresho-potato-onion-tomato-1-kg-each.jpg",
+    "company" : "Fresho",
+    "name" : "Potato Onion Tomato 1 kg Each",
+    "price1" : 143.72,
+    "price2" : 109.21,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 19,
+    "discount" : 25,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000067_23-fresho-capsicum-green.jpg",
+    "company" : "Fresho",
+    "name" : "Capsicum - Green (Loose)",
+    "price1" : 95.39,
+    "price2" : 71.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 20,
+    "discount" : 27,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40057966_3-fresho-tender-coconut-medium.jpg",
+    "company" : "Fresho",
+    "name" : "Tender Coconut",
+    "price1" : 44.74,
+    "price2" : 32.66,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 21,
+    "discount" : 33,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/20000541_12-bb-royal-fried-grambengal-gram.jpg",
+    "company" : "BB Royal",
+    "name" : "Fried Gram/Huri Kadale",
+    "price1" : 40,
+    "price2" : 27,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 22,
+    "discount" : 28,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/30010377_11-bb-popular-urad-dal-split.jpg",
+    "company" : "BB Popolar",
+    "name" : "Urad Dal/Uddina Bele - Split",
+    "price1" : 200,
+    "price2" : 145,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 23,
+    "discount" : 30,
+    "img" : "https://www.bigbasket.com/media/uploads/bpi/bangalore/mm/40229270_2-vaseline-cocoa-glow-body-lotion.jpg",
+    "company" : "Vaseline",
+    "name" : "Cocoa Glow Body Lotion",
+    "price1" : 625,
+    "price2" : 437,
+    "delivery" : "Today 7:00PM-10:00PM"
+},
+{
+    "id" : 24,
+    "discount" : 30,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40128535_3-eveready-carbon-zinc-battery-red-hd-aaa-1012.jpg",
+    "company" : "Eveready",
+    "name" : "1012 Carbon Zinc Battery - AAA",
+    "price1" : 180,
+    "price2" : 126,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 25,
+    "discount" : 25,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40044731_13-bb-popular-moong-dal.jpg",
+    "company" : "BB Popolar",
+    "name" : "Moong Dal/Hesaru Bele",
+    "price1" : 380,
+    "price2" : 284,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 26,
+    "discount" : 36,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000471_17-bb-royal-channa-dal.jpg",
+    "company" : "BB Royal",
+    "name" : "Chana Dal/Kadale Bele",
+    "price1" : 80,
+    "price2" : 51,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 27,
+    "discount" : 43,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000269_31-fresho-pomegranate.jpg",
+    "company" : "Fresho",
+    "name" : "Pomegranate (Loose)",
+    "price1" : 261.18,
+    "price2" : 150,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 28,
+    "discount" : 49,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40120011_7-disano-olive-oil-extra-virgin.jpg",
+    "company" : "Disano",
+    "name" : "Extra Virgin Olive Oil",
+    "price1" : 7195,
+    "price2" : 3669.45,
+    "delivery" : "Today 7:00PM-10:00PM"
+},
+{
+    "id" : 29,
+    "discount" : 44,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40021402_7-bb-popular-cashewkaju-whole.jpg",
+    "company" : "BB Popolar",
+    "name" : "Cashew/Godambi - Whole",
+    "price1" : 1500,
+    "price2" : 835,
+    "delivery" : "Today 7:00AM-10:00PM"
+},
+{
+    "id" : 30,
+    "discount" : 25,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40075469_9-bb-royal-organic-turtoor-dal.jpg",
+    "company" : "BB Royal",
+    "name" : "Organic - Toor Dal/Togari Bele",
+    "price1" : 299,
+    "price2" : 399,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 31,
+    "discount" : 38,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40026602_10-bb-royal-mustardrai-small.jpg",
+    "company" : "BB Royal",
+    "name" : "Mustard/Sasive/Rai - Small",
+    "price1" : 150,
+    "price2" : 93,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 32,
+    "discount" : 30,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10001001_7-fresho-chicken-breast-boneless-antibiotic-residue-free.jpg",
+    "company" : "Fresho",
+    "name" : "Chicken Breast - Boneless, Antibiotic Residue-Free, 4 To 6 pcs",
+    "price1" : 688,
+    "price2" : 479,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 33,
+    "discount" : 28,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000045_18-fresho-beetroot.jpg",
+    "company" : "Fresho",
+    "name" : "Beetroot (Loose)",
+    "price1" : 34.31,
+    "price2" : 24.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 34,
+    "discount" : 25,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40097083_10-ariel-detergent-washing-powder-matic-front-load.jpg",
+    "company" : "Ariel",
+    "name" : "Detergent Washing Powder - Matic Front Load",
+    "price1" : 660,
+    "price2" : 495,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 35,
+    "discount" : 35,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/30009286_7-fresho-blueberry.jpg",
+    "company" : "Fresho",
+    "name" : "Blueberry",
+    "price1" : 290.13,
+    "price2" : 187.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 36,
+    "discount" : 49,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40136241_10-kitchen-essentials-steel-cook-serve-set-with-glass-lid-1500-ml-each.jpg",
+    "company" : "Kitchen Essentials",
+    "name" : "Steel Cook & Serve Set - With Glass Lid, 16 cm, Sturdy, Highly Durable",
+    "price1" : 880,
+    "price2" : 449,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 37,
+    "discount" : 47,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/303124_6-borges-durum-wheat-pasta-spaghetti.jpg",
+    "company" : "BORGES",
+    "name" : "Durum Wheat Pasta - Spaghetti",
+    "price1" : 299,
+    "price2" : 158.47,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 38,
+    "discount" : 44,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/1212200_1-borges-extra-virgin-olive-oil-1l-olive-oil-extra-light-2l.jpg",
+    "company" : "BORGES",
+    "name" : "Extra Virgin Olive Oil 1L + Olive Oil - Extra Light 2L",
+    "price1" : 4000,
+    "price2" : 2231,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 39,
+    "discount" : 29,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000472_11-bb-royal-urad-wholegota.jpg",
+    "company" : "BB Royal",
+    "name" : "Urad Whole/Gota",
+    "price1" : 210,
+    "price2" : 149,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 40,
+    "discount" : 32,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40218525_12-bb-home-borosilicate-glass-foodtiffinstorage-container-with-pp-lid-round-green.jpg",
+    "company" : "BB Home",
+    "name" : "Borosilicate Glass Food/Tiffin/Storage Container - With PP Lid, Round, Green",
+    "price1" : 409,
+    "price2" : 279,
+    "delivery" : "Today 7:00PM-10:00PM"
+},
+    ];
+
+    let logo = document.getElementById("logo");
+    logo.setAttribute("href", "index.html");
+    
+    display(data);
+
+    function display (data) {
+        data.forEach((element) => {
+            let card = document.createElement("div");
+            let discount = document.createElement("p");
+            discount.setAttribute("id", "disc");
+            discount.innerText = "GET "+ element.discount +"% OFF **";
+            let img = document.createElement("img");
+            img.setAttribute("src", element.img);
+            let company = document.createElement("p");
+            company.setAttribute("id", "comp");
+            company.innerText = element.company;
+            let name = document.createElement("p");
+            name.setAttribute("id","nam");
+            name.innerText = element.name;
+            let rate = document.createElement("div");
+            rate.setAttribute("id", "rat");
+            let price = document.createElement("span");
+            price.setAttribute("id","pri");
+            price.innerText = "MRP: "
+            let price1 = document.createElement("span");
+            price1.setAttribute("id", "pri1");
+            price1.innerText = "Rs "+element.price1+" ";
+            let price2 = document.createElement("span");
+            price2.setAttribute("id", "pri2");
+            price2.innerText = "Rs "+element.price2;
+            let delivery = document.createElement("p");
+            delivery.setAttribute("id", "del");
+            delivery.innerText = "Standard Delivery: " + element.delivery;
+            let addbtn = document.createElement("button");
+            addbtn.setAttribute("id", "add");
+            addbtn.innerText = "ADD";
+
+            rate.append(price,price1,price2,delivery,addbtn);
+            card.append(discount,img,company,name,rate);
+            container2.append(card);
+        });
+    }
+</script>
+</html>
