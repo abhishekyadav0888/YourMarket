@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title >Your Market</title>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://kit.fontawesome.com/b65380c159.js" crossorigin="anonymous"></script>
     <style>
         nav {
@@ -16,16 +17,18 @@
             top: 0;
             right: 0;
             left: 0;
-            background-color: #E0E0E0;
+            background-color: white;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
         #logo {
             margin-left: 50px;
         }
         #logo > img {
             width: 32%;
+            border: none;
         }
         #search > input {
-            height: 25px;
+            height: 30px;
         }
         #search > button {
             height: 30px;
@@ -77,6 +80,19 @@
         #banner {
             width: 100%;
             margin-top: 75px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .carousel-cell {
+            width: 120%;
+            height: 400px;
+            background-size: cover;
+            background-position: center center;
+        }
+        .carousel-cell ::before {
+            display: block;
+            content: "";
         }
         #banner2 {
             width: 90%;
@@ -218,6 +234,84 @@
             color: #81C784;
             width: 20%;
         }
+        #bestsellers {
+            width: 90%;
+            justify-content: center;
+            margin-top: 25px;
+            /* margin-right: 25px; */
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: auto;
+        }
+        #bestsellers > div {
+            height: 400px;
+            padding-top: 0px;
+            padding-bottom: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+        #bestsellers > div:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        #bestsellers > div > img {
+            width: 80%;
+            display: block;
+            margin: auto;
+            border: none;
+        }
+        #disc {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            margin-top: 2px;
+            line-height: 22px;
+            font-size: 10px;
+            text-align: right;
+            color: #d67d73;
+            font-weight: bolder;
+        }
+        #comp {
+            color: #999999;
+            font-size: 11px;
+            padding: 0px 0px;
+            margin: 5px 0px 0px 0px;
+        }
+        #nam {
+            color: #333333;
+            font-size: 13px;
+            padding: 0px 0px;
+            margin: 5px 0px 0px 0px;
+        }
+        #rat {
+            background-color: #f4f3f2;
+            padding: 15px 8px 15px 10px;
+            margin-top: 10px;
+        }
+        #pri {
+            color: #6E6E71;
+            font-size: 10px;
+        }
+        #pri1 {
+            color: #6E6E71;
+            font-size: 10px;
+            text-decoration: line-through;
+        }
+        #pri2 {
+            color: #231F20;
+            font-size: 14px;
+        }
+        #del {
+            color: #333333;
+            font-size: 10px;
+            padding: 0px 0px;
+            margin: 5px 0px 10px 0px;
+        }
+        #add {
+            background-color: #fde37b;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 15px;
+            font-size: 13px;
+        }
 
     </style>
 </head>
@@ -232,20 +326,23 @@
         </div>
         <div id="basket">
             <div id="basket1">
-                <a href="login.html" target="_blank"><p>Login/Sign Up</p></a>
+                <a href="login.html"><p>Login/Sign Up</p></a>
             </div>
             <div id="basket2">
                 <div>
                     <img style="width: 10%;" src="\pics\cart.jpg" alt="">
                 </div>
                 <div>
-                    <a href=""><span id="cart">0</span><span> items</span></a>
+                    <a href="/cart.html"><span id="cart">0</span><span> items</span></a>
                 </div>
             </div>
         </div>
     </nav>
-    <div id="banner">
-        <img src="https://www.bigbasket.com/media/uploads/banner_images/YXHP144_hp_fom_m_bbpl-staples_460_121222_Bangalore.jpg" alt="">
+    <div id="banner" class="carousel" data-flickity='{"autoPlay" : true}'>
+        <div class="carousel-cell" style="background-image: url(https://www.bigbasket.com/media/uploads/banner_images/hp_m_GOURMETPL_SnackswithNoLimits_460px-011222.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(https://www.bigbasket.com/media/uploads/banner_images/YXHP144_hp_fom_m_bbpl-staples_460_121222_Bangalore.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(https://www.bigbasket.com/media/uploads/banner_images/Cp_m_GM_EPBanner_460-051222.jpg);"></div>
+        <div class="carousel-cell" style="background-image: url(https://www.bigbasket.com/media/uploads/banner_images/hp_m_Dairy_460px-011222.jpg);"></div>
     </div>
     <div id="cat">
         <img src="https://www.bigbasket.com/media/uploads/banner_images/hp_topstrip_m_251122_01.png" alt="">
@@ -380,5 +477,78 @@
             </tbody>
         </table>
     </div>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </body>
+<script>
+    let data = JSON.parse(localStorage.getItem("data"));
+    let cartdata = JSON.parse(localStorage.getItem("cartdata")) || [];
+    let cartvalue = document.getElementById("cart");
+    cartvalue.innerText = cartdata.length;
+
+    let bestsellers = document.getElementById("bestsellers");
+    display(data);
+
+    function display (data) {
+        bestsellers.innerHTML = null;
+        cartvalue.innerText=cartdata.length;
+        data.forEach((element,index) => {
+            if(index<5) {
+                let card = document.createElement("div");
+            let discount = document.createElement("p");
+            discount.setAttribute("id", "disc");
+            discount.innerText = "GET "+ element.discount +"% OFF **";
+            let img = document.createElement("img");
+            img.setAttribute("src", element.img);
+            let company = document.createElement("p");
+            company.setAttribute("id", "comp");
+            company.innerText = element.company;
+            let name = document.createElement("p");
+            name.setAttribute("id","nam");
+            name.innerText = element.name;
+            let rate = document.createElement("div");
+            rate.setAttribute("id", "rat");
+            let price = document.createElement("span");
+            price.setAttribute("id","pri");
+            price.innerText = "MRP: "
+            let price1 = document.createElement("span");
+            price1.setAttribute("id", "pri1");
+            price1.innerText = "Rs "+element.price1+" ";
+            let price2 = document.createElement("span");
+            price2.setAttribute("id", "pri2");
+            price2.innerText = "Rs "+element.price2;
+            let delivery = document.createElement("p");
+            delivery.setAttribute("id", "del");
+            delivery.innerText = "Standard Delivery: " + element.delivery;
+            let addbtn = document.createElement("button");
+            addbtn.setAttribute("id", "add");
+            addbtn.innerText = "ADD";
+            addbtn.addEventListener("click", ()=>{
+                
+                let present=false;
+                for(let i=0; i<cartdata.length; i++) {
+                    if(cartdata[i].id==element.id) {
+                        present = true;
+                        break;
+                    }
+                }
+                if(present==false) {
+                    cartdata.push({...element, quantity : 1});
+                    localStorage.setItem("cartdata", JSON.stringify(cartdata));
+                    display(data);
+                    alert("Product is added to cart.");
+                } else {
+                    alert("Product is already in cart.");
+                }
+                
+            })
+
+            rate.append(price,price1,price2,delivery,addbtn);
+            card.append(discount,img,company,name,rate);
+            bestsellers.append(card);
+            }
+            
+        });
+    }
+
+</script>
 </html>

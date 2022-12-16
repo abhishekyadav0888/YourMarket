@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Your Market</title>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://kit.fontawesome.com/b65380c159.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #f3f3f3;
+        }
+        nav {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            height: 75px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: white;
+        }
+        #logo {
+            margin-left: 50px;
+        }
+        #logo > a > img {
+            width: 32%;
+        }
+        #search > input {
+            height: 25px;
+        }
+        #search > button {
+            height: 30px;
+            width: 40px;
+        }
+        #basket2 {
+            display: flex;
+        }
+        #basket2 > div {
+            text-align: right;
+        }
+        #basket2 > div:nth-child(2) {
+            width: 50px;
+        }
+        nav img {
+            width: 20%;
+        }
+        #search {
+            width: 100%;
+            height: 30px;
+            width: 100%;
+        }
+        #search > input {
+            width: 80%;
+        }
+        #cartshow {
+            margin-top: 100px;
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+
+
+        #about {
+            margin: auto;
+            border: 1px solid grey;
+            padding: 10px;
+            margin-top: 30px;
+        }
+        #green {
+            color: #81C784;
+            font-weight: bold;
+        }
+        .black {
+            color: black;
+            font-size: 30px;
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+        .left {
+            text-align: left;
+            color: grey;
+        }
+        img {
+            width: 100%;
+        }
+        div {
+            width: 90%;
+            margin: auto;
+        }
+        div > img {
+            border: 0.25px solid #E0E0E0;
+        }
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            color: rgb(68, 68, 68);
+        }
+        #below2 {
+            width: 100%;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+        }
+        table {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+        td {
+            text-align: left;
+        }
+        td > img {
+            width: 5%;
+        }
+        .tdgreen {
+            color: #81C784;
+            width: 20%;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <a href="./index.html"><img src="\pics\YourMarket.png" alt=""></a>
+        </div>
+        <div id="search">
+            <input id="input" type="text" placeholder="Search for Products...">
+            <button id="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="basket">
+            <div id="basket2">
+                <div>
+                    <img style="width: 10%;" src="\pics\cart.jpg" alt="">
+                </div>
+                <div>
+                    <a href=""><span id="cart">0</span><span> items</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="cartshow">
+        <p>Your Basket ( <span id="cart2"></span> items) </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ITEM DESCRIPTION</th>
+                    <th>UNIT PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>SUBTOTAL</th>
+                    <th>SAVINGS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Append data here -->
+            </tbody>
+        </table>
+    </div>
+    <div id="below2">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="tdgreen">POPULAR CATEGORIES:</td>
+                    <td>Sunflower Oils, Wheat Atta, Ghee, Milk, Health Drinks, Flakes, Organic F&V, Namkeen, Eggs, Floor Cleaners, Other Juices, Leafy Vegetables, Frozen Veg Food, Diapers & Wipes.</td>
+                </tr>
+                <tr>
+                    <td class="tdgreen">POPULAR BRANDS:</td>
+                    <td>Amul, Nescafe, MTR, RED BULL, elite cake, Pediasure, Yummiez, Yera, Yakult, Britannia, Wow Momo, Fortune, Haldirams, Ferrero, Lays, Patanjali, McCain, kwality walls, Cadbury Dairy Milk, Pedigree.</td>
+                </tr>
+                <tr>
+                    <td class="tdgreen">CITIES WE SERVE:</td>
+                    <td>Bangalore, Hyderabad, Mumbai, Pune, Chennai, Delhi, Mysore, Madurai, Coimbatore, Vijayawada-Guntur, Kolkata, Ahmedabad-Gandhinagar, Nashik Business, Lucknow-Kanpur, Gurgaon, Vadodara, Visakhapatnam, Surat, Nagpur, Patna, Indore, Chandigarh Tricity, Jaipur, Bhopal, Noida-Ghaziabad, Kochi, Krishna District, Bhubaneshwar-Cuttack, Guwahati, Renigunta, Hubli, Davanagere, Trichy, Amravati, Raipur, Rajkot, Gwalior, Bareilly, Allahabad, Hyderabad Rural, Bangalore Rural, Chennai Rural, Vizag Rural, Lucknow Rural, Noida Rural, Ahmedabad Rural, Bhopal Rural, Bhubaneswar Rural, Coimbatore Rural, Chandigarh Rural, Gurugram Rural, Guwahati Rural, Indore Rural, Kochi Rural, Kolkata Rural, Mumbai Rural, Mysore Rural, Nagpur Rural, Patna Rural, Pune Rural, Surat Rural, Vadodara Rural, Jaipur Rural, Ranchi, Nashik, Agra, Kozhikode.</td>
+                </tr>
+                <tr>
+                    <td class="tdgreen">PAYMENT OPTIONS:</td>
+                    <td>
+                        <img src="https://cdn.shopify.com/s/files/1/0353/8056/0012/files/payment_cod.svg?v=1663912907" alt="">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Visa-europe-logo.gif" alt="">
+                        <img src="https://img.etimg.com/thumb/msid-92061657,width-300,imgsize-10384,,resizemode-4,quality-100/axis-bank-and-indian-oil-launch-co-branded-rupay-contactless-credit-card.jpg" alt="">
+                        <img src="https://i0.wp.com/www.mobileworldlive.com/wp-content/uploads/2013/06/300px-MasterCard_Logo.png?w=300&ssl=1" alt="">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    let cart = JSON.parse(localStorage.getItem("cartdata"));
+    let cartvalue = document.getElementById("cart");
+    let cartvalue2 = document.getElementById("cart2");
+    let tbody = document.querySelector("tbody");
+
+    cartvalue.innerText = cart.length;
+    cartvalue2.innerText = cart.length;
+
+    display(cart);
+
+    function display (data) {
+        tbody.innerHTML = null;
+        data.forEach((element,index) => {
+            let tr = document.createElement("tr");
+            let item = document.createElement("td");
+            let company = document.createElement("p");
+            company.innerText = element.company;
+            let name = document.createElement("p");
+            name.innerText = element.name;
+            item.append(company, name);
+            let price = document.createElement("td");
+            let price2 = document.createElement("p");
+            price2.innerText = "Rs. " + element.price2;
+            let price1 = document.createElement("p");
+            price1.innerText = "Rs. " + element.price1;
+            price.append(price2,price1);
+            let decrease = document.createElement("button");
+            decrease.innerText = "-";
+            let increase = document.createElement("button");
+            increase.innerText = "+";
+            let quantitydata = document.createElement("td");
+            let quantity = document.createElement("span");
+            quantity.innerText = " "+element.quantity+" ";
+            quantitydata.append(decrease,quantity,increase);
+            let subtotal = document.createElement("td");
+            subtotal.innerText = (element.price2 * element.quantity);
+            let savings = document.createElement("td");
+            savings.innerText = ((element.price1 - element.price2)*element.quantity).toFixed(2);
+            decrease.addEventListener("click", ()=>{
+            if(quantity.innerText > 0) {
+                data[index].quantity -= 1;
+                localStorage.setItem("cartdata", JSON.stringify(data));
+                display(data);
+            }
+            });
+            increase.addEventListener("click", ()=>{
+                data[index].quantity += 1;
+                localStorage.setItem("cartdata", JSON.stringify(data));
+                display(data);
+            });
+
+            tr.append(item,price,quantitydata,subtotal,savings);
+            tbody.append(tr);
+        });
+    }
+  
+</script>
+</html>
