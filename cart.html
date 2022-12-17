@@ -57,11 +57,56 @@
         }
         #cartshow {
             margin-top: 100px;
-            width: 70%;
-            margin-left: 15%;
-            margin-right: 15%;
+            width: 100%;
         }
-
+        #fortotal {
+            width: 520px;
+            height: 275px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-radius: 5px;
+            margin-right: 0px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #fortotal > div {
+            height: 100px;
+        }
+        #a3 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+        #a6 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+        #a2, #a5 {
+            text-align: right;
+        }
+        #a3 {
+            text-align: center;
+        }
+        #a6 {
+            text-align: right;
+        }
+        #a6 > button {
+            height: 50px;
+            width: 180px;
+            font-size: 25px;
+            text-align: center;
+            border-radius: 5px;
+            background-color: #fce17b;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #a6 > button:hover {
+            background-color: yellow;
+            cursor: pointer;
+            border: 0.25px solid gray;
+        }
 
         #about {
             margin: auto;
@@ -106,9 +151,49 @@
             margin-right: 20px;
         }
         table {
-            width: 70%;
-            margin-left: 15%;
-            margin-right: 15%;
+            width: 80%;
+            margin-left: 10%;
+        }
+        .companyvalue {
+            color: grey;
+            font-size: 12px;
+        }
+        .namevalue {
+            font-size: 16px;
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+        .price2value {
+            font-size: 16px;
+            text-align: right;
+        }
+        .price1value {
+            font-size: 12px;
+            text-decoration: line-through;
+            color: grey;
+            text-align: right;
+        }
+        .quantityvalue {
+            text-align: center;
+        }
+        
+        #th1 {
+            width: 40%;
+        }
+        #th2 {
+            width: 5%
+        }
+        #th3 {
+            width: 15%;
+        }
+        #th4 {
+            width: 10%;
+        }
+        #th5 {
+            width: 10%;
+        }
+        #th6 {
+            width: 10%;
         }
         td {
             text-align: left;
@@ -120,6 +205,7 @@
             color: #81C784;
             width: 20%;
         }
+
 
     </style>
 </head>
@@ -148,17 +234,26 @@
         <table>
             <thead>
                 <tr>
-                    <th>ITEM DESCRIPTION</th>
-                    <th>UNIT PRICE</th>
-                    <th>QUANTITY</th>
-                    <th>SUBTOTAL</th>
-                    <th>SAVINGS</th>
+                    <th id="th1">ITEM DESCRIPTION</th>
+                    <th id="th2">UNIT PRICE</th>
+                    <th id="th3">QUANTITY</th>
+                    <th id="th4">SUBTOTAL</th>
+                    <th id="th5"> </th>
+                    <th id="th6">SAVINGS</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Append data here -->
             </tbody>
         </table>
+        <div id="fortotal">
+            <div id="a1"></div>
+            <div id="a2"></div>
+            <div id="a3"></div>
+            <div id="a4"></div>
+            <div id="a5"></div>
+            <div id="a6"></div>
+        </div>
     </div>
     <div id="below2">
         <table>
@@ -193,26 +288,80 @@
     let cartvalue = document.getElementById("cart");
     let cartvalue2 = document.getElementById("cart2");
     let tbody = document.querySelector("tbody");
+    let cartshow = document.getElementById("cartshow");
+    let a1 = document.getElementById("a1");
+    let a2 = document.getElementById("a2");
+    let a3 = document.getElementById("a3");
+    let a4 = document.getElementById("a4");
+    let a5 = document.getElementById("a5");
+    let a6 = document.getElementById("a6");
+    let fortotal = document.getElementById("fortotal");
 
-    cartvalue.innerText = cart.length;
-    cartvalue2.innerText = cart.length;
-
+    
     display(cart);
+    cartshowing(cart);
+
+    function cartshowing (cart) {
+        a1.innerHTML = null;
+        a2.innerHTML = null;
+        a3.innerHTML = null;
+        a4.innerHTML = null;
+        a5.innerHTML = null;
+        a6.innerHTML = null;
+        let a21data = 0;
+        let a32data = 0;
+        cart.forEach((element,index)=>{
+            a21data += element.price2 * element.quantity;
+            a32data += ((element.price1-element.price2) * element.quantity);
+        })
+        let a11 = document.createElement("p");
+        let a12 = document.createElement("p");
+        a11.innerText = "Subtotal :";
+        a12.innerText = "Delivery Charges :";
+        a1.append(a11,a12);
+        let a21 = document.createElement("p");
+        let a22 = document.createElement("p");
+        a21.innerText = "Rs. "+ a21data;
+        a22.innerText = "Free";
+        a2.append(a21,a22);
+        let a31 = document.createElement("p");
+        a31.innerText = "You saved!";
+        let a32 = document.createElement("h3");
+        a32.innerText = "Rs. "+ a32data.toFixed(2);
+        a3.append(a31,a32);
+        let a41 = document.createElement("h1");
+        a41.innerText = "TOTAL";
+        a4.append(a41);
+        let a51 = document.createElement("h1");
+        a51.innerText = "Rs. "+ a21data;
+        a5.append(a51);
+        let a61 = document.createElement("button");
+        a61.innerText = "CHECKOUT";
+        a6.append(a61);
+    }
 
     function display (data) {
+        cartvalue.innerText = 0;
+        cartvalue2.innerText = 0;
         tbody.innerHTML = null;
         data.forEach((element,index) => {
+            cartvalue.innerText = data.length;
+            cartvalue2.innerText = data.length;
             let tr = document.createElement("tr");
             let item = document.createElement("td");
             let company = document.createElement("p");
+            company.setAttribute("class", "companyvalue");
             company.innerText = element.company;
             let name = document.createElement("p");
+            name.setAttribute("class", "namevalue")
             name.innerText = element.name;
             item.append(company, name);
             let price = document.createElement("td");
             let price2 = document.createElement("p");
+            price2.setAttribute("class", "price2value");
             price2.innerText = "Rs. " + element.price2;
             let price1 = document.createElement("p");
+            price1.setAttribute("class", "price1value");
             price1.innerText = "Rs. " + element.price1;
             price.append(price2,price1);
             let decrease = document.createElement("button");
@@ -220,27 +369,39 @@
             let increase = document.createElement("button");
             increase.innerText = "+";
             let quantitydata = document.createElement("td");
+            quantitydata.setAttribute("class", "quantityvalue")
             let quantity = document.createElement("span");
             quantity.innerText = " "+element.quantity+" ";
             quantitydata.append(decrease,quantity,increase);
             let subtotal = document.createElement("td");
             subtotal.innerText = (element.price2 * element.quantity);
+            let dlt = document.createElement("button");
+            dlt.innerText = "Delete";
             let savings = document.createElement("td");
             savings.innerText = ((element.price1 - element.price2)*element.quantity).toFixed(2);
             decrease.addEventListener("click", ()=>{
-            if(quantity.innerText > 0) {
+            if(quantity.innerText > 1) {
                 data[index].quantity -= 1;
                 localStorage.setItem("cartdata", JSON.stringify(data));
                 display(data);
+                cartshowing(data);
             }
             });
             increase.addEventListener("click", ()=>{
                 data[index].quantity += 1;
                 localStorage.setItem("cartdata", JSON.stringify(data));
                 display(data);
+                cartshowing(data);
             });
+            dlt.addEventListener("click", ()=>{
+                let data = JSON.parse(localStorage.getItem("cartdata"));
+                data.splice(index,1);
+                localStorage.setItem("cartdata", JSON.stringify(data));
+                display(data);
+                cartshowing(data);
+            })
 
-            tr.append(item,price,quantitydata,subtotal,savings);
+            tr.append(item,price,quantitydata,subtotal,dlt,savings);
             tbody.append(tr);
         });
     }

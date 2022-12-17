@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            width: 400px;
+            height: 500px;
+            margin: auto;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        p {
+            display: block;
+            margin: auto;
+            width: 80%;
+            height: 30px;
+        }
+        #submit {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        input {
+            display: block;
+            margin: auto;
+            width: 80%;
+            height: 40px;
+            margin-bottom: 40px;
+            border: 1px solid grey;        
+            border-radius: 8px;
+        }
+        #msg {
+            text-align: center;
+        }
+        .abc {
+            padding-left: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Your Market</h1>
+        <form>
+            <h2>Sign in</h2>
+            <p>Email</p>
+            <input class="abc" id="email" type="email" placeholder="Enter E-mail">
+            <p>Password</p>
+            <input class="abc" id="password" type="password" placeholder="Enter Password">
+            <input type="submit" name="" id="submit">
+            <p id="msg">Don't have an account? <a href="/signup.html">Sign Up</a></p>
+        </form>
+    </div>
+</body>
+<script>
+    let myform = document.querySelector("form");
+
+    myform.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        let signupdata = JSON.parse(localStorage.getItem("signup"));
+        signupdata.forEach((element) => {
+            if(myform.email.value==element.email) {
+                if(myform.password.value==element.password) {
+                    alert("Sign in succesfull");
+                } else {
+                    alert("Wrong password");
+                }
+            } else {
+                alert("Wrong credentials");
+            }
+        });
+    })
+</script>
+</html>
