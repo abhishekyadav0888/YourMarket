@@ -26,7 +26,9 @@
             margin-left: 50px;
         }
         #logo > a > img {
-            width: 32%;
+            width: 20.5%;
+            border: none;
+            background-color: #84C225;
         }
         #search > input {
             height: 25px;
@@ -57,31 +59,46 @@
         }
         #cartshow {
             margin-top: 100px;
-            width: 100%;
+            width: 70%;
+            background-color: white;
+        }
+        #cartshow > p {
+            padding-top: 25px;
+            padding-left: 25px;
+            font-size: 25px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
         #fortotal {
             width: 520px;
             height: 275px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            gap: 0px;
             border-radius: 5px;
-            margin-right: 0px;
+            margin-right: 0%;
+            margin-top: 50px;
+            margin-bottom: 50px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         }
         #fortotal > div {
-            height: 100px;
+            height: 90px;
+        }
+        #a1, #a2, #a4, #a5 {
+            border-bottom: 1px solid grey;
         }
         #a3 {
             grid-column-start: 3;
             grid-column-end: 4;
             grid-row-start: 1;
             grid-row-end: 3;
+            border-left: 1px solid grey;
         }
         #a6 {
             grid-column-start: 1;
             grid-column-end: 4;
             grid-row-start: 3;
             grid-row-end: 4;
+            margin-top: 20px;
         }
         #a2, #a5 {
             text-align: right;
@@ -103,7 +120,7 @@
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
         #a6 > button:hover {
-            background-color: yellow;
+            background-color: #84C225;
             cursor: pointer;
             border: 0.25px solid gray;
         }
@@ -150,10 +167,30 @@
             margin-bottom: 30px;
             margin-right: 20px;
         }
-        table {
-            width: 80%;
-            margin-left: 10%;
+        #below2 > table td {
+            border: none;
         }
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        table td,
+        table th {
+        border: 1px solid #ddd;
+        padding: 0px;
+        padding-left: 5px;
+        padding-right: 5px;
+        }
+        #cartshow > table tr:nth-child(even) {
+        background-color: #8caacf;
+        }
+        #cartshow > table tr:hover {
+        background-color: #ddd;
+        }
+        
+
+
         .companyvalue {
             color: grey;
             font-size: 12px;
@@ -176,24 +213,40 @@
         .quantityvalue {
             text-align: center;
         }
-        
+        .subtotalvalue {
+            text-align: right;
+        }
+        .dltvalue {
+            margin: 25px 20px 20px 25px;
+        }
+        .savingsvalue {
+            text-align: right;
+            color: #be1e2d;
+            font-size: 16px;
+        }
+
+        #th1, #th2, #th3, #th4, #th5, #th6 {
+            background-color: #555555;
+            color: white;
+            padding: 10px;
+        }
         #th1 {
-            width: 40%;
+            width: 50%;
         }
         #th2 {
-            width: 5%
+            width: 20%
         }
         #th3 {
-            width: 15%;
+            width: 14%;
         }
         #th4 {
-            width: 10%;
+            width: 5%;
         }
         #th5 {
             width: 10%;
         }
         #th6 {
-            width: 10%;
+            width: 5%;
         }
         td {
             text-align: left;
@@ -212,11 +265,11 @@
 <body>
     <nav>
         <div id="logo">
-            <a href="./index.html"><img src="\pics\YourMarket.png" alt=""></a>
+            <a href="./index.html"><img src="\pics\Y.png" alt=""></a>
         </div>
         <div id="search">
-            <input id="input" type="text" placeholder="Search for Products...">
-            <button id="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <!-- <input id="input" type="text" placeholder="Search for Products...">
+            <button id="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></button> -->
         </div>
         <div id="basket">
             <div id="basket2">
@@ -284,7 +337,7 @@
     </div>
 </body>
 <script>
-    let cart = JSON.parse(localStorage.getItem("cartdata"));
+    let cart = JSON.parse(localStorage.getItem("cartdata")) || [];
     let cartvalue = document.getElementById("cart");
     let cartvalue2 = document.getElementById("cart2");
     let tbody = document.querySelector("tbody");
@@ -338,6 +391,16 @@
         let a61 = document.createElement("button");
         a61.innerText = "CHECKOUT";
         a6.append(a61);
+        a61.addEventListener("click", ()=>{
+            alert ("Do your payment.");
+            window.location.href = "payment.html";
+            cart = [];
+            let value = null;
+            localStorage.setItem("cartdata", JSON.stringify(cart));
+            localStorage.setItem("signin", JSON.stringify(value));
+            display(cart);
+            cartshowing(cart);
+        })
     }
 
     function display (data) {
@@ -374,10 +437,15 @@
             quantity.innerText = " "+element.quantity+" ";
             quantitydata.append(decrease,quantity,increase);
             let subtotal = document.createElement("td");
-            subtotal.innerText = (element.price2 * element.quantity);
+            subtotal.setAttribute("class", "subtotalvalue")
+            subtotal.innerText = "Rs. "+(element.price2 * element.quantity);
+            let dlttd = document.createElement("td");
             let dlt = document.createElement("button");
+            dlt.setAttribute("class", "dltvalue")
             dlt.innerText = "Delete";
+            dlttd.append(dlt);
             let savings = document.createElement("td");
+            savings.setAttribute("class", "savingsvalue")
             savings.innerText = ((element.price1 - element.price2)*element.quantity).toFixed(2);
             decrease.addEventListener("click", ()=>{
             if(quantity.innerText > 1) {
@@ -401,7 +469,7 @@
                 cartshowing(data);
             })
 
-            tr.append(item,price,quantitydata,subtotal,dlt,savings);
+            tr.append(item,price,quantitydata,subtotal,dlttd,savings);
             tbody.append(tr);
         });
     }

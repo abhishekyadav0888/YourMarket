@@ -24,8 +24,9 @@
             margin-left: 50px;
         }
         #logo > img {
-            width: 32%;
+            width: 20.5%;
             border: none;
+            background-color: #84C225;
         }
         #search > input {
             height: 25px;
@@ -305,15 +306,15 @@
 <body>
     <nav>
         <div id="logo">
-            <img src="\pics\YourMarket.png" alt="">
+            <img src="\pics\Y.png" alt="">
         </div>
         <div id="search">
-            <input type="text" placeholder="Search for Products...">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input id="input" type="text" placeholder="Search for Products...">
+            <button id="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div id="basket">
             <div id="basket1">
-                <a href="login.html"><p>Sign in</p></a>
+                <a href="signin.html"><p id="signin">Sign in</p></a>
             </div>
             <div id="basket2">
                 <div>
@@ -464,10 +465,77 @@
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </body>
 <script>
-    let data = JSON.parse(localStorage.getItem("data"));
+    let data = [
+
+{
+    "id" : 13,
+    "discount" : 54,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000103_16-fresho-cucumber.jpg",
+    "company" : "Fresho",
+    "name" : "Cucumber (Loose)",
+    "price1" : 35.86,
+    "price2" : 16.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 39,
+    "discount" : 29,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000472_11-bb-royal-urad-wholegota.jpg",
+    "company" : "BB Royal",
+    "name" : "Urad Whole/Gota",
+    "price1" : 210,
+    "price2" : 149,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 11,
+    "discount" : 26,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/40178129_10-pampers-diaper-pants-large.jpg",
+    "company" : "Pampers",
+    "name" : "All-Round Protection Diaper Pants - L, 9-14 kg, Anti-Rash, Ultra Absorb",
+    "price1" : 3149,
+    "price2" : 2341.50,
+    "delivery" : "Today 7:00PM-10:00PM"
+},
+{
+    "id" : 27,
+    "discount" : 43,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000269_31-fresho-pomegranate.jpg",
+    "company" : "Fresho",
+    "name" : "Pomegranate (Loose)",
+    "price1" : 261.18,
+    "price2" : 150,
+    "delivery" : "Today 8:00AM-10:00AM"
+},
+{
+    "id" : 3,
+    "discount" : 25,
+    "img" : "https://www.bigbasket.com/media/uploads/p/mm/10000067_23-fresho-capsicum-green.jpg",
+    "company" : "Fresho",
+    "name" : "Capsicum - Green (Loose)",
+    "price1" : 95.39,
+    "price2" : 71.50,
+    "delivery" : "Today 8:00AM-10:00AM"
+}
+
+
+    ];
     let cartdata = JSON.parse(localStorage.getItem("cartdata")) || [];
     let cartvalue = document.getElementById("cart");
+    let input = document.getElementById("input");
+    let searchbtn = document.getElementById("searchbtn");
+    let signinvalue = document.getElementById("signin");
+    let value = JSON.parse(localStorage.getItem("signin"));
+    if(value != null) {
+        signinvalue.innerText = value[value.length-1].name;
+    }
+    
     cartvalue.innerText = cartdata.length;
+
+
+    searchbtn.addEventListener("click", ()=> {
+        window.location.href = "showmore.html"
+    })
 
     let bestsellers = document.getElementById("bestsellers");
     display(data);
@@ -477,7 +545,7 @@
         cartvalue.innerText=cartdata.length;
         data.forEach((element,index) => {
             if(index<5) {
-                let card = document.createElement("div");
+            let card = document.createElement("div");
             let discount = document.createElement("p");
             discount.setAttribute("id", "disc");
             discount.innerText = "GET "+ element.discount +"% OFF **";

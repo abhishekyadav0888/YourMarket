@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
+    <title>Signin</title>
     <style>
         h1 {
             text-align: center;
@@ -28,15 +28,15 @@
             height: 30px;
         }
         #submit {
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
         input {
             display: block;
             margin: auto;
             width: 80%;
             height: 40px;
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             border: 1px solid grey;        
             border-radius: 8px;
         }
@@ -53,33 +53,40 @@
     <div>
         <h1>Your Market</h1>
         <form>
-            <h2>Sign up</h2>
-            <p>Full name</p>
-            <input class="abc" id="name" type="text" placeholder="Enter your full name">
+            <h2>Sign in</h2>
             <p>Email</p>
             <input class="abc" id="email" type="email" placeholder="Enter E-mail">
             <p>Password</p>
             <input class="abc" id="password" type="password" placeholder="Enter Password">
             <input type="submit" name="" id="submit">
-            <p id="msg">Already have an account? <a href="/signin.html">Sign In</a></p>
+            <p id="msg">Don't have an account? <a href="/signup.html">Sign Up</a></p>
         </form>
     </div>
 </body>
 <script>
     let myform = document.querySelector("form");
-    let signupdata = JSON.parse(localStorage.getItem("signup")) || [];
 
-    myform.addEventListener("submit", ()=>{
-        window.location.href = "signin.html";
-        let data = {
-            name : myform.name.value,
-            email : myform.email.value,
-            password : myform.password.value
+    myform.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        let signupdata = JSON.parse(localStorage.getItem("signup")) || [];
+        let found = false;
+        signupdata.filter((element) => {
+            if(myform.email.value==element.email) {
+                if(myform.password.value==element.password) {
+                    let name = {name : element.name};
+                    let signin = JSON.parse(localStorage.getItem("signin")) || [];
+                    signin.push(name);
+                    localStorage.setItem("signin", JSON.stringify(signin));
+                    found = true;
+                }
+            } 
+        });
+        if (found == true) {
+            alert ("Sign in Successfully.");
+            window.location.href = "index.html";
+        } else {
+            alert ("Wrong Credentials.");
         }
-        signupdata.push(data);
-        localStorage.setItem("signup", JSON.stringify(signupdata));
-        alert("Sign up Successfully. You can signin now.");
     })
-
 </script>
 </html>
